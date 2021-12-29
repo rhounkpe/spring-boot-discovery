@@ -15,14 +15,24 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
+
+    public Student create(Student student) {
+        return studentRepository.save(student);
+    }
+
+    public Student findById(Integer id) {
+        return studentRepository.findById(id).orElseThrow();
+    }
+
+
     public Optional<Student> findStudentByMatr(String matr) {
-        return studentFactory()
+        return studentRepository.findAll()
                 .stream()
                 .filter(student -> student.getMatr().equals(matr))
                 .findFirst();
     }
 
-    public List<Student> studentFactory() {
-        return studentRepository.studentFactory();
+    public List<Student> findAll() {
+        return studentRepository.findAll();
     }
 }

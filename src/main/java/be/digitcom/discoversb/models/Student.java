@@ -1,5 +1,10 @@
 package be.digitcom.discoversb.models;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "students")
 public class Student extends Person {
     private String matr;
 

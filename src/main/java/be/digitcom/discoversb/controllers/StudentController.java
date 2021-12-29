@@ -3,10 +3,7 @@ package be.digitcom.discoversb.controllers;
 import be.digitcom.discoversb.models.Student;
 import be.digitcom.discoversb.services.StudentService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,9 +18,14 @@ public class StudentController {
         this.studentService = studentService;
     }
 
+    @PostMapping({"", "/"})
+    public Student create(@RequestBody Student student) {
+        return studentService.create(student);
+    }
+
     @GetMapping({"", "/"})
     public List<Student> getAll() {
-        return this.studentService.studentFactory();
+        return this.studentService.findAll();
     }
 
     @GetMapping("/{matr}")

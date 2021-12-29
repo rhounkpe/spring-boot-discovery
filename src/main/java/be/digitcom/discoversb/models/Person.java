@@ -1,8 +1,15 @@
 package be.digitcom.discoversb.models;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "people")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Person {
+    @Id
+    @GeneratedValue
+    private Integer id;
     private String firstName;
     private String lastName;
     private LocalDate dob;
@@ -29,5 +36,13 @@ public abstract class Person {
 
     public void setDob(LocalDate dob) {
         this.dob = dob;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
